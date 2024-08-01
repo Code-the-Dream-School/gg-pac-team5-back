@@ -30,7 +30,7 @@ app.use(favicon(__dirname + '/public/favicon.ico'));
 // routes
 app.use('/api/v1/auth', authRouter);
 app.use('/api/v1', authenticateUser, mainRouter);
-app.use('/api/v1/vendors', authenticateUser, vendorRouter);
+app.use('/api/v1/vendors', vendorRouter);
 app.use('/api/v1/services', authenticateUser, serviceRouter);
 app.use('/api/v1/clients', authenticateUser, clientRouter);
 app.use('/api/v1/appointments', authenticateUser, appointmentRouter);
