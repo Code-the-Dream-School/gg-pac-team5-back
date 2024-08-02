@@ -1,7 +1,7 @@
 {
-  "name": "Beauty Finder GG-PRAC-TEAM5",
+  "name": "gg-practicum-team-5-back",
   "version": "1.0.0",
-  "description": "Back-End Repo for GG Team 5",
+  "description": "Back-End Repo for Team 5 of Grackle/Giraffe",
   "main": "app.js",
   "scripts": {
     "dev": "nodemon src/server.js"
