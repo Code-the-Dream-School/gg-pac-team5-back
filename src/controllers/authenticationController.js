@@ -26,7 +26,7 @@ authenticationController.vendorLogin = async (req, res) => {
   };
 
   const token = vendor.createJWT()
-  res.status(200).json({ user: { name: vendor.name }, token });
+  res.status(200).json({ vendor: { name: vendor.name }, token });
 };
 
 authenticationController.clientRegister = async (req, res) => {
@@ -52,7 +52,7 @@ authenticationController.clientLogin = async (req, res) => {
   };
 
   const token = client.createJWT()
-  res.status(200).json({ user: { name: client.firstName }, token });
+  res.status(200).json({ client: { name: client.firstName }, token });
 };
 
 module.exports = authenticationController;

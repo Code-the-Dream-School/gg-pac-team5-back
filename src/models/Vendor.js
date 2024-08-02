@@ -71,6 +71,10 @@ const VendorSchema = new Schema({
     ref: "Service",
     // required: [true, 'Please select services'],
   },
+  imageUrl: {
+    type: String,
+    match: [/(http(s?):)([/|.|\w|\s|-])*\.(?:jpg|jpeg|gif|png|webp|svg|JPG|JPEG|GIF|PNG|WEBP|SVG)/, "Invalid image URL format"]
+  },
   createdBy: {
     type: Schema.Types.ObjectId,
     ref: 'Vendor',
