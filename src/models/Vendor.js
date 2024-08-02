@@ -30,6 +30,7 @@ const VendorSchema = new Schema({
   createdBy: {
     type: mongoose.Types.ObjectId,
     ref: 'Vendor',
+    required: [true, 'Please provide your first name'],
   },
   password: {
     type: String,

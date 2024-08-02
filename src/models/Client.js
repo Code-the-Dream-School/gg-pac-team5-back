@@ -34,6 +34,7 @@ const ClientSchema = new Schema({
   createdBy: {
     type: mongoose.Types.ObjectId,
     ref: 'Client',
+    required: [true, 'Please provide your first name'],
   },
   password: {
     type: String,

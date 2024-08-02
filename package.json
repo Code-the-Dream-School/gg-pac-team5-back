@@ -4,11 +4,14 @@
   "description": "Back-End Repo for Team 1 of Baboon/Bald Eagle Practicum",
   "main": "app.js",
   "scripts": {
-    "dev": "nodemon src/server.js"
+    "dev": "nodemon src/server.js",
+    "test:puppeteer": "NODE_ENV=test mocha src/tests/*.js --grep @puppeteer --exit",
+    "test:chai": "NODE_ENV=test mocha src/tests/*.js --grep @chai --exit"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@types/chai": "^4.3.16",
     "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
@@ -20,6 +23,8 @@
     "morgan": "^1.10.0"
   },
   "devDependencies": {
+    "@faker-js/faker": "^8.4.1",
+    "factory-bot": "^6.3.1",
     "nodemon": "^2.0.21"
   }
 }
