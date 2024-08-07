@@ -1,0 +1,944 @@
+openapi: 3.0.0
+info:
+  title: Beauty Finder
+  contact: {}
+  version: '1.0'
+servers:
+- url: tbd
+  variables: {}
+  
+paths:
+
+  /auth/vendor-register:
+    post:
+      tags:
+      - Authentication
+      summary: Register Vendor
+      operationId: RegisterVendor
+      parameters: []
+      requestBody:
+        description: Register a new vendor
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/RegisterVendorRequest'
+        required: true
+      responses:
+        '201':
+          description: Successful operation
+          headers: {}
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/VendorResponse'
+        '400':
+          description: '***this part is not complete***'
+        '401':
+          description: '***this part is not complete***'
+        '500':
+          description: '***this part is not complete***'
+      deprecated: false
+      security: []
+
+  /auth/vendor-login:
+    post:
+      tags:
+      - Authentication
+      summary: Login Vendor
+      operationId: LoginVendor
+      parameters: []
+      requestBody:
+        description: Log in with existing credentials
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/LoginVendorRequest'
+        required: true
+      responses:
+        '200':
+          description: Successful operation
+          headers: {}
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/VendorResponse'
+        '400':
+          description: '***this part is not complete***'
+        '401':
+          description: '***this part is not complete***'
+        '500':
+          description: '***this part is not complete***'
+      deprecated: false
+      security: []
+
+  /auth/client-register:
+    post:
+      tags:
+      - Authentication
+      summary: Register Client
+      operationId: RegisterClient
+      parameters: []
+      requestBody:
+        description: Register a new client
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/RegisterClientRequest'
+        required: true
+      responses:
+        '201':
+          description: Successful operation
+          headers: {}
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/ClientResponse'
+        '400':
+          description: '***this part is not complete***'
+        '401':
+          description: '***this part is not complete***'
+        '500':
+          description: '***this part is not complete***'
+      deprecated: false
+      security: []
+
+  /auth/cient-login:
+    post:
+      tags:
+      - Authentication
+      summary: Login Client
+      operationId: LoginClient
+      parameters: []
+      requestBody:
+        description: Log in with existing credentials
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/LoginClientRequest'
+        required: true
+      responses:
+        '200':
+          description: Successful operation
+          headers: {}
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/ClientResponse'
+        '400':
+          description: '***this part is not complete***'
+        '401':
+          description: '***this part is not complete***'
+        '500':
+          description: '***this part is not complete***'
+      deprecated: false
+      security: []
+
+  /vendors:
+    get:
+      tags:
+      - Vendors
+      summary: All Vendors
+      operationId: AllVendors
+      parameters: []
+      responses:
+        '200':
+          description: Successful operation
+          headers: {}
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  vendors:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Vendor'
+        '401':
+          description: '***this part is not complete***'
+        '500':
+          description: '***this part is not complete***'
+      deprecated: false
+      security:
+      - bearer: []
+
+    post:
+      tags:
+      - Vendors
+      summary: Create Vendor
+      operationId: CreateVendor
+      parameters: []
+      requestBody:
+        description: Create a new vendor
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/Vendor'
+        required: true
+      responses:
+        '201':
+          description: Successful operation
+          headers: {}
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Vendor'  
+        '401':
+          description: '***this part is not complete***'
+        '500':
+          description: '***this part is not complete***'
+      deprecated: false
+
+  /vendors/{id}:
+    parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        required: true
+        description: The vendor ID
+        
+    get:
+      tags:
+      - Vendors
+      summary: Get Single Vendor
+      operationId: SingleVendor
+      parameters: []
+      responses:
+        '200':
+          description: Successful operation
+          headers: {}
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Vendor'  
+        '401':
+          description: '***this part is not complete***'
+        '500':
+          description: '***this part is not complete***'
+      deprecated: false
+      security:
+      - bearer: []
+
+    patch:
+      tags:
+      - Vendors
+      summary: Update Vendor
+      operationId: UpdateVendor
+      parameters: []
+      requestBody:
+        description: Partial change to a vendor
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/UpdateVendorRequest'
+            example:
+              name: qqqq
+              email: qqqqq@qqq.qq
+              street: 123 Main St
+        required: true
+      responses:
+        '200':
+          description: Successful operation
+          headers: {}
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Vendor'  
+        '404':
+          description: '***this part is not complete***'
+        '500':
+          description: '***this part is not complete***'
+      deprecated: false
+      security:
+      - bearer: []
+      
+    delete:
+      tags:
+      - Vendors
+      summary: Delete Vendor
+      operationId: DeleteVendor
+      parameters: []
+      responses:
+        '200':
+          description: Successful operation
+          headers: {}
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/DeleteSuccess'
+        '404':
+          description: '***this part is not complete***'
+        '500':
+          description: '***this part is not complete***'
+      deprecated: false
+      security:
+      - bearer: []
+
+
+  /clients:
+    get:
+      tags:
+      - Clients
+      summary: All Clients
+      operationId: AllClients
+      parameters: []
+      responses:
+        '200':
+          description: Successful operation
+          headers: {}
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  vendors:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Vendor'
+        '401':
+          description: '***this part is not complete***'
+        '500':
+          description: '***this part is not complete***'
+      deprecated: false
+      security:
+      - bearer: []
+
+    post:
+      tags:
+      - Clients
+      summary: Create Client
+      operationId: CreateClient
+      parameters: []
+      requestBody:
+        description: Create a new Client
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/Vendor'
+        required: true
+      responses:
+        '201':
+          description: Successful operation
+          headers: {}
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Vendor'  
+        '401':
+          description: '***this part is not complete***'
+        '500':
+          description: '***this part is not complete***'
+      deprecated: false
+
+  /clients/{id}:
+    parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        required: true
+        description: The client ID
+        
+    get:
+      tags:
+      - Clients
+      summary: Get Single Client
+      operationId: SingleClient
+      parameters: []
+      responses:
+        '200':
+          description: Successful operation
+          headers: {}
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Vendor'  
+        '401':
+          description: '***this part is not complete***'
+        '500':
+          description: '***this part is not complete***'
+      deprecated: false
+      security:
+      - bearer: []
+
+    patch:
+      tags:
+      - Clients
+      summary: Update Client
+      operationId: UpdateClient
+      parameters: []
+      requestBody:
+        description: Partial change to a vendor
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/UpdateVendorRequest'
+            example:
+              name: qqqq
+              email: qqqqq@qqq.qq
+              street: 123 Main St
+        required: true
+      responses:
+        '200':
+          description: Successful operation
+          headers: {}
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Vendor'  
+        '404':
+          description: '***this part is not complete***'
+        '500':
+          description: '***this part is not complete***'
+      deprecated: false
+      security:
+      - bearer: []
+      
+    delete:
+      tags:
+      - Clients
+      summary: Delete Client
+      operationId: DeleteClient
+      parameters: []
+      responses:
+        '200':
+          description: Successful operation
+          headers: {}
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/DeleteSuccess'
+        '404':
+          description: '***this part is not complete***'
+        '500':
+          description: '***this part is not complete***'
+      deprecated: false
+      security:
+      - bearer: []
+
+
+components:
+  schemas:
+  
+    RegisterVendorRequest:
+      title: Register Vendor Request
+      required:
+      - name
+      - email
+      - password
+      - street
+      - city
+      - state
+      - zipCode
+      - country
+      - phone
+      - createdBy
+      type: object
+      properties:
+        name:
+          type: string
+        email:
+          type: string
+          pattern: email
+          minLength: 10
+        password:
+          type: string
+          minLength: 8
+          maxLength: 100
+        street:
+          type: string
+        city:
+          type: string
+        state:
+          type: string
+          minLength: 2
+          maxLength: 2
+        zipCode:
+          type: string
+          minLength: 5
+          maxLength: 5
+        country:
+          type: string
+        phone:
+          type: number
+          minimum: 1000000000
+          maximum: 9999999999
+        extension:
+          type: number
+          minimum: 1
+          maximum: 99999
+        contactEmail:
+          type: string
+          pattern: email
+        contactName:
+          type: string
+        services:
+          type: array
+          items:
+            type: string
+            pattern: Service.id
+        createdBy:
+          type: string
+          pattern: Vendor.id
+        updatedBy:
+          type: string
+          pattern: Vendor.id
+      example:
+        name: qqqq
+        email: qqqqq@qqq.qq
+        password: A!1aaaaa
+        street: 123 Main St
+        city: City
+        state: ST
+        zipCode: "12345"
+        country: USA
+        phone: 5555555555
+        extension: 333
+        contactEmail: eee@eee.eee
+        contactName: Customer Service Kelly
+        services: [aaa111aaa111, bbb222bbb222, ccc333ccc333]
+        createdBy: ddd444ddd444
+        updatedBy: ddd444ddd444
+
+    LoginVendorRequest:
+      title: Login User Request
+      required:
+      - email
+      - password
+      type: object
+      properties:
+        email:
+          type: string
+        password:
+          type: string
+      example:
+        email: qqqq@qqq.qq
+        password: qqqqqq
+          
+    RegisterClientRequest:
+      title: Register User Request
+      required:
+      - firstName
+      - lastName
+      - email
+      - password
+      - street
+      - city
+      - state
+      - zipCode
+      - country
+      - phone
+      - createdBy
+      type: object
+      properties:
+        firstName:
+          type: string
+          maxLength: 50
+        lastName:
+          type: string
+          maxLength: 50
+        email:
+          type: string
+          pattern: email
+          minLength: 10
+        password:
+          type: string
+          minLength: 8
+          maxLength: 100
+        street:
+          type: string
+        city:
+          type: string
+        state:
+          type: string
+          minLength: 2
+          maxLength: 2
+        zipCode:
+          type: string
+          minLength: 5
+          maxLength: 5
+        country:
+          type: string
+        phone:
+          type: number
+          minimum: 1000000000
+          maximum: 9999999999
+        extension:
+          type: number
+          minimum: 1
+          maximum: 99999
+        appointments:
+          type: array
+          items:
+            type: string
+            pattern: Appointment.id
+        createdBy:
+          type: string
+          pattern: Vendor.id
+        updatedBy:
+          type: string
+          pattern: Vendor.id
+      example:
+        firstName: qqqq
+        lastName: qqqq
+        email: qqqqq@qqq.qq
+        password: A!1aaaaa
+        street: 123 Main St
+        city: City
+        state: ST
+        zipCode: "12345"
+        country: USA
+        phone: 5555555555
+        extension: 333
+        services: [aaa111aaa111, bbb222bbb222, ccc333ccc333]
+        createdBy: ddd444ddd444
+        updatedBy: ddd444ddd444
+        
+    LoginClientRequest:
+      title: Login User Request
+      required:
+      - email
+      - password
+      type: object
+      properties:
+        email:
+          type: string
+        password:
+          type: string
+      example:
+        email: qqqq@qqq.qq
+        password: qqqqqq
+        
+    VendorResponse:
+      title: Vendor Login/Register Response
+      type: object
+      properties:
+        vendor:
+          type: object
+          properties:
+            name:
+              type: string
+        token:
+          type: string
+      example:
+        vendor:
+          name: qqqq
+        token: token
+                
+    ClientResponse:
+      title: Client Login/Register Response
+      type: object
+      properties:
+        client:
+          type: object
+          properties:
+            firstName:
+              type: string
+        token:
+          type: string
+      example:
+        client:
+          firstName: qqqq
+        token: token
+        
+    Vendor:
+      title: Vendor
+      required:
+      - name
+      - email
+      - password
+      - street
+      - city
+      - state
+      - zipCode
+      - country
+      - phone
+      - createdBy
+      type: object
+      properties:
+        name:
+          type: string
+        email:
+          type: string
+          pattern: email
+          minLength: 10
+        password:
+          type: string
+          minLength: 8
+          maxLength: 100
+        street:
+          type: string
+        city:
+          type: string
+        state:
+          type: string
+          minLength: 2
+          maxLength: 2
+        zipCode:
+          type: string
+          minLength: 5
+          maxLength: 5
+        country:
+          type: string
+        phone:
+          type: number
+          minimum: 1000000000
+          maximum: 9999999999
+        extension:
+          type: number
+          minimum: 1
+          maximum: 99999
+        contactEmail:
+          type: string
+          pattern: email
+        contactName:
+          type: string
+        services:
+          type: array
+          items:
+            type: string
+            pattern: Service.id
+        createdBy:
+          type: string
+          pattern: Vendor.id
+        updatedBy:
+          type: string
+          pattern: Vendor.id
+      example:
+        name: qqqq
+        email: qqqqq@qqq.qq
+        password: A!1aaaaa
+        street: 123 Main St
+        city: City
+        state: ST
+        zipCode: "12345"
+        country: USA
+        phone: 5555555555
+        extension: 333
+        contactEmail: eee@eee.eee
+        contactName: Customer Service Kelly
+        services: [aaa111aaa111, bbb222bbb222, ccc333ccc333]
+        createdBy: ddd444ddd444
+        updatedBy: ddd444ddd444
+        
+    UpdateVendorRequest:
+      title: Update Vendor
+      type: object
+      properties:
+        name:
+          type: string
+        email:
+          type: string
+          pattern: email
+          minLength: 10
+        password:
+          type: string
+          minLength: 8
+          maxLength: 100
+        street:
+          type: string
+        city:
+          type: string
+        state:
+          type: string
+          minLength: 2
+          maxLength: 2
+        zipCode:
+          type: string
+          minLength: 5
+          maxLength: 5
+        country:
+          type: string
+        phone:
+          type: number
+          minimum: 1000000000
+          maximum: 9999999999
+        extension:
+          type: number
+          minimum: 1
+          maximum: 99999
+        contactEmail:
+          type: string
+          pattern: email
+        contactName:
+          type: string
+        services:
+          type: array
+          items:
+            type: string
+            pattern: Service.id
+        createdBy:
+          type: string
+          pattern: Vendor.id
+        updatedBy:
+          type: string
+          pattern: Vendor.id
+        
+    Client:
+      title: Client
+      required:
+      - firstName
+      - lastName
+      - email
+      - password
+      - street
+      - city
+      - state
+      - zipCode
+      - country
+      - phone
+      - createdBy
+      type: object
+      properties:
+        firstName:
+          type: string
+          maxLength: 50
+        lastName:
+          type: string
+          maxLength: 50
+        email:
+          type: string
+          pattern: email
+          minLength: 10
+        password:
+          type: string
+          minLength: 8
+          maxLength: 100
+        street:
+          type: string
+        city:
+          type: string
+        state:
+          type: string
+          minLength: 2
+          maxLength: 2
+        zipCode:
+          type: string
+          minLength: 5
+          maxLength: 5
+        country:
+          type: string
+        phone:
+          type: number
+          minimum: 1000000000
+          maximum: 9999999999
+        extension:
+          type: number
+          minimum: 1
+          maximum: 99999
+        appointments:
+          type: array
+          items:
+            type: string
+            pattern: Appointment.id
+        createdBy:
+          type: string
+          pattern: Vendor.id
+        updatedBy:
+          type: string
+          pattern: Vendor.id
+      example:
+        firstName: qqqq
+        lastName: qqqq
+        email: qqqqq@qqq.qq
+        password: A!1aaaaa
+        street: 123 Main St
+        city: City
+        state: ST
+        zipCode: "12345"
+        country: USA
+        phone: 5555555555
+        extension: 333
+        services: [aaa111aaa111, bbb222bbb222, ccc333ccc333]
+        createdBy: ddd444ddd444
+        updatedBy: ddd444ddd444
+        
+    UpdateClientRequest:
+      title: Update Client
+      type: object
+      properties:
+        firstName:
+          type: string
+          maxLength: 50
+        lastName:
+          type: string
+          maxLength: 50
+        email:
+          type: string
+          pattern: email
+          minLength: 10
+        password:
+          type: string
+          minLength: 8
+          maxLength: 100
+        street:
+          type: string
+        city:
+          type: string
+        state:
+          type: string
+          minLength: 2
+          maxLength: 2
+        zipCode:
+          type: string
+          minLength: 5
+          maxLength: 5
+        country:
+          type: string
+        phone:
+          type: number
+          minimum: 1000000000
+          maximum: 9999999999
+        extension:
+          type: number
+          minimum: 1
+          maximum: 99999
+        appointments:
+          type: array
+          items:
+            type: string
+            pattern: Appointment.id
+        createdBy:
+          type: string
+          pattern: Vendor.id
+        updatedBy:
+          type: string
+          pattern: Vendor.id
+
+    DeleteSuccess:
+      title: Delete Success Response
+      type: object
+      properties:
+        message: 
+          type: string
+      example:
+        message: Vendor/Client ${name} deleted successfully
+        
+  securitySchemes:
+    bearer:
+      type: http
+      scheme: bearer
+security: []
+tags:
+- name: Authentication
+  description: User registration and login
+- name: Vendors
+  description: CRUD on Vendors
+- name: Clients
+  description: CRUD on Clients
+  
+  
