@@ -10,6 +10,6 @@ const populateTestData = require('./utils/populateTestData');
     const listener = () => console.log(`Listening on Port ${PORT}!`);
     app.listen(PORT, listener);
   } catch (error) {
-    console.log(error); 
+    console.log(error);
   }
 })();
