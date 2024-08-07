@@ -20,7 +20,9 @@
     "express-favicon": "^2.0.4",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^7.0.1",
-    "morgan": "^1.10.0"
+    "morgan": "^1.10.0",
+    "swagger-ui-express": "^5.0.0",
+    "yamljs": "^0.3.0"
   },
   "devDependencies": {
     "@faker-js/faker": "^8.4.1",
