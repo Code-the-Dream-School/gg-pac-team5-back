@@ -14,7 +14,6 @@ appointmentController.getAppointment = async (req, res) => {
 };
 
 appointmentController.createAppointment = async (req, res) => {
-  console.log(`17aaa`);
   // req.body.createdBy = req.user.userID;
   const appointment = await Appointment.create(req.body);
   res.status(201).json({ appointment });
