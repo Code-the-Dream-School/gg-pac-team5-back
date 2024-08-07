@@ -83,6 +83,7 @@ const ClientSchema = new Schema({
   updatedBy: {
     type: Schema.Types.ObjectId,
     ref: 'Client',
+    required: [true, 'Please provide your first name'],
   },
 },
   { timestamps: true });
