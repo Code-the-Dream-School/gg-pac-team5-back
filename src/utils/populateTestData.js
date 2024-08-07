@@ -69,20 +69,20 @@ const defaultTestClient = {
 
 const createDefaultVendor = async () => {
   const defaultVendor = await factory.build(vendorModelName);
-  return await factory.create(vendorModelName, { createdBy: defaultVendor._id, ...defaultTestVendor });
+  return await factory.create(vendorModelName, { createdBy: defaultVendor._id, updatedBy: defaultVendor._id, ...defaultTestVendor });
 };
 
 const createDefaultClient = async () => {
   const defaultClient = await factory.build(clientModelName);
-  return await factory.create(clientModelName, { createdBy: defaultClient._id, ...defaultTestClient });
+  return await factory.create(clientModelName, { createdBy: defaultClient._id, updatedBy: defaultClient._id, ...defaultTestClient });
 };
 
 const createMultipleVendors = async (id) => {
-  return await factory.createMany(vendorModelName, 20, { createdBy: id });
+  return await factory.createMany(vendorModelName, 20, { createdBy: id, updatedBy: id });
 };
 
 const createMultipleClients = async (id) => {
-  return await factory.createMany(clientModelName, 20, { createdBy: id });
+  return await factory.createMany(clientModelName, 20, { createdBy: id, updatedBy: id });
 };
 
 const createTestData = async () => {
