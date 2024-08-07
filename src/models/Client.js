@@ -64,16 +64,13 @@ const ClientSchema = new Schema({
     type: Number,
     maxlength: 5,
   },
-  contactEmail: {
-    type: String,
-    match: [/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/, 'Please provide a valid email']
-  },
-  contactName: {
-    type: String
-  },
   appointments: {
     type: [Schema.Types.ObjectId],
     ref: 'Appointment'
+  },
+  imageUrl: {
+    type: String,
+    match: [/(http(s?):)([/|.|\w|\s|-])*\.(?:jpg|jpeg|gif|png|webp|svg|JPG|JPEG|GIF|PNG|WEBP|SVG)/, "Invalid image URL format"]
   },
   createdBy: {
     type: Schema.Types.ObjectId,
