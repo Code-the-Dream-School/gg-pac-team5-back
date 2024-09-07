@@ -102,7 +102,7 @@ const createMultipleClients = async (id) => {
 
 const createMultipleServices = async () => {
   const vendors = await Vendor.find({});
-  vendors.map((vendor) => vendor.createdBy.toString()).forEach(async (id) => await factory.createMany(serviceModelName, 3, { createdBy: id, updateBy: id }))
+  vendors.map((vendor) => vendor._id).forEach(async (id) => await factory.createMany(serviceModelName, 3, { createdBy: id, updateBy: id }))
 }
 
 const createTestData = async () => {
