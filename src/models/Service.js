@@ -18,7 +18,7 @@ const ServiceSchema = new Schema({
   },
   availableQuantity: {
     type: Number,
-    required: [true, 'Please provide available quantity of the services'],
+    required: [false, 'Please provide available quantity of the services'],
   },
   booked: {
     type: [String],

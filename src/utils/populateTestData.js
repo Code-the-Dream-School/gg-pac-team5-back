@@ -3,6 +3,7 @@ const Vendor = require('../models/Vendor.js');
 const Client = require('../models/Client.js');
 const { fakerEN_US, faker } = require('@faker-js/faker');
 const mongoose = require('mongoose');
+const Service = require('../models/Service.js');
 require('dotenv').config();
 
 const connectDB = async () => {
@@ -26,6 +27,7 @@ const testClientEmail = 'bbb@bbb.bbb';
 const testUserPassword = 'A!1aaaaa';
 const vendorModelName = 'vendor';
 const clientModelName = 'client';
+const serviceModelName = 'service';
 const defaultCountry = 'US';
 
 const factory = FactoryBot.factory;
@@ -63,6 +65,13 @@ factory.define(clientModelName, Client, {
   phone: () => fakerEN_US.number.int({ min: 1000000000, max: 9999999999 }),
 });
 
+factory.define(serviceModelName, Service, {
+  name: () => faker.commerce.productName(),
+  image: () => faker.image.urlLoremFlickr({ category: 'food' }),
+  description: () => faker.commerce.productDescription(),
+  price: faker.commerce.price
+})
+
 const defaultTestVendor = {
   email: testVendorEmail,
   password: testUserPassword,
@@ -91,14 +100,20 @@ const createMultipleClients = async (id) => {
   return await factory.createMany(clientModelName, 20, { createdBy: id, updatedBy: id });
 };
 
+const createMultipleServices = async (id) => {
+  return await factory.createMany(serviceModelName, 20, { createdBy: id, updateBy: id });
+}
+
 const createTestData = async () => {
   try {
     await Vendor.deleteMany({});
     await Client.deleteMany({});
+    await Service.deleteMany({});
     const { _id: vendorId } = await createDefaultVendor();
     const { _id: clientId } = await createDefaultClient();
     await createMultipleVendors(vendorId);
     await createMultipleClients(clientId);
+    await createMultipleServices(vendorId);
     console.log('The database is populated');
     console.log(
       `\nDefault vendor email "${testVendorEmail}"
