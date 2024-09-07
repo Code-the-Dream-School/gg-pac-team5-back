@@ -1,7 +1,7 @@
 const FactoryBot = require('factory-bot');
 const Vendor = require('../models/Vendor.js');
 const Client = require('../models/Client.js');
-const { fakerEN_US } = require('@faker-js/faker');
+const { fakerEN_US, faker } = require('@faker-js/faker');
 const mongoose = require('mongoose');
 require('dotenv').config();
 
@@ -42,6 +42,12 @@ factory.define(vendorModelName, Vendor, {
   zip: () => fakerEN_US.number.int({ min: 10000, max: 99999 }),
   country: () => defaultCountry,
   phone: () => fakerEN_US.number.int({ min: 1000000000, max: 9999999999 }),
+  profile: {
+    profileImage: () => faker.image.urlLoremFlickr({ category: 'business' }),
+    backgroundImage: () => faker.image.url(),
+    summary: faker.company.catchPhrase,
+    description: () => faker.lorem.sentences(),
+  },
 });
 
 factory.define(clientModelName, Client, {
