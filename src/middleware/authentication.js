@@ -15,7 +15,7 @@ const authenticationMiddleware = async (req, res, next) => {
     next();
   } catch (error) {
     console.log('Not authed to access this route');
-    return res.status(403).send("Unauthenticated")
+    return res.status(403).send("Invalid authentication token")
   }
 };
 
