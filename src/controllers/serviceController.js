@@ -4,7 +4,7 @@ const serviceController = {};
 
 serviceController.getAllServices = async (req, res) => {
   const services = await Service.find({});
-  return res.status(200).json({ services })
+  return res.status(200).json(services)
 }
 
 serviceController.getService = async (req, res) => {
