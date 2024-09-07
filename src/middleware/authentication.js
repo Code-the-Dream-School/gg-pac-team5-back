@@ -4,6 +4,7 @@ const authenticationMiddleware = async (req, res, next) => {
   const authHeader = req.headers.authorization;
   if (!authHeader || !authHeader.startsWith('Bearer ')) {
     console.log('No token provided');
+    return res.status(401).send("Unauthenticated")
   };
   const token = authHeader.split(' ')[1];
 
