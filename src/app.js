@@ -37,7 +37,7 @@ app.use('/api/v1/auth', authRouter);
 app.use('/api/v1/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerDocument));
 app.use('/api/v1', mainRouter);
 app.use('/api/v1/vendors', vendorRouter);
-app.use('/api/v1/services', authenticateUser, serviceRouter);
+app.use('/api/v1/services', serviceRouter);
 app.use('/api/v1/clients', authenticateUser, clientRouter);
 app.use('/api/v1/appointments', authenticateUser, appointmentRouter);
 app.use('/api/v1/contacts', authenticateUser, contactRouter);
