@@ -100,8 +100,9 @@ const createMultipleClients = async (id) => {
   return await factory.createMany(clientModelName, 20, { createdBy: id, updatedBy: id });
 };
 
-const createMultipleServices = async (id) => {
-  return await factory.createMany(serviceModelName, 20, { createdBy: id, updateBy: id });
+const createMultipleServices = async () => {
+  const vendors = await Vendor.find({});
+  vendors.map((vendor) => vendor.createdBy.toString()).forEach(async (id) => await factory.createMany(serviceModelName, 3, { createdBy: id, updateBy: id }))
 }
 
 const createTestData = async () => {
@@ -113,7 +114,7 @@ const createTestData = async () => {
     const { _id: clientId } = await createDefaultClient();
     await createMultipleVendors(vendorId);
     await createMultipleClients(clientId);
-    await createMultipleServices(vendorId);
+    await createMultipleServices();
     console.log('The database is populated');
     console.log(
       `\nDefault vendor email "${testVendorEmail}"
