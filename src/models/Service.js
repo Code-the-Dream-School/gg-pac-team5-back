@@ -7,6 +7,15 @@ const ServiceSchema = new Schema({
     required: [true, 'Please provide the service name'],
     maxlength: 50
   },
+  image: {
+    type: String
+  },
+  description: {
+    type: String
+  },
+  price: {
+    type: Number
+  },
   availableQuantity: {
     type: Number,
     required: [true, 'Please provide available quantity of the services'],
