@@ -15,7 +15,7 @@ const authenticationMiddleware = async (req, res, next) => {
     next();
   } catch (error) {
     console.log('Not authed to access this route');
-    throw new Error();
+    return res.status(401).send("Unauthenticated")
   }
 };
 
