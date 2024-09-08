@@ -7,6 +7,13 @@ serviceController.getAllServices = async (req, res) => {
   return res.status(200).json(services)
 }
 
+serviceController.getServiceByVendorId = async (req, res) => {
+  const { id } = req.params;
+  console.log(id)
+  const services = await Service.find({ createdBy: id });
+  return res.status(200).json(services);
+}
+
 serviceController.getService = async (req, res) => {
   const { params: { id: serviceId } } = req;
 

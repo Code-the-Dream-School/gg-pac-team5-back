@@ -6,6 +6,7 @@ const authenticateUser = require('../middleware/authentication.js');
 
 router.get('/', serviceController.getAllServices)
 router.get('/:id', serviceController.getService);
+router.get('/vendorId/:id', serviceController.getServiceByVendorId);
 router.post('/', authenticateUser, serviceController.createService);
 
 module.exports = router;
