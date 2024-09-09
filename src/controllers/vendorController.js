@@ -2,6 +2,12 @@ const Vendor = require('../models/Vendor')
 
 const vendorController = {};
 
+vendorController.getVendorByName = async (req, res) => {
+  const { name } = req.params
+  const vendor = await Vendor.findOne({ name: name })
+  res.status(200).json({ vendor })
+}
+
 vendorController.getAllVendors = async (req, res) => {
   const vendors = await Vendor.find({});
   res.status(200).json({ vendors })
