@@ -4,6 +4,7 @@ const authenticationMiddleware = async (req, res, next) => {
   const authHeader = req.headers.authorization;
   if (!authHeader || !authHeader.startsWith('Bearer ')) {
     console.log('No token provided');
+    return res.status(403).send("Unauthenticated")
   };
   const token = authHeader.split(' ')[1];
 
@@ -14,7 +15,7 @@ const authenticationMiddleware = async (req, res, next) => {
     next();
   } catch (error) {
     console.log('Not authed to access this route');
-    throw new Error();
+    return res.status(403).send("Invalid authentication token")
   }
 };
 
